@@ -87,25 +87,35 @@ function updateChart() {
 // --- Add Entry on button click ---
 arrivedBtn.addEventListener("click", () => {
     const predicted = predictedInput.value;
+    
     if (!predicted) {
-        alert("Enter predicted time first.");
+        // Array of custom random messages
+        const messages = [
+            "Lixing Wang + Emma Pasaporte = ❤️",
+            "When does Adihson die? Hopefully, soon!",
+            "Sped Briseno vs. Greg Heffley for dumbest of all time",
+            "Incandescent or Hot? (Niche ball knowledge since he's so unknown)",
+            "PLEASE LET ME IN JAPAN"
+        ];
+        
+        // Pick a random message
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        alert(randomMsg);
         return;
     }
 
     const now = new Date();
 
-    // Use manual date if provided
     const entryDate = manualDateInput.value || 
                       now.getFullYear() + "-" + 
                       String(now.getMonth() + 1).padStart(2,"0") + "-" + 
                       String(now.getDate()).padStart(2,"0");
 
-    // Convert to 12-hour format
     let hours = now.getHours();
     const minutes = String(now.getMinutes()).padStart(2,"0");
     const ampm = hours >= 12 ? "PM" : "AM";
     hours = hours % 12;
-    hours = hours ? hours : 12; // convert 0 -> 12
+    hours = hours ? hours : 12;
     const actual = `${hours}:${minutes} ${ampm}`;
 
     const diff = calcDifference(predicted, actual);
@@ -118,7 +128,6 @@ arrivedBtn.addEventListener("click", () => {
     updateTable();
     updateChart();
 
-    // Clear inputs
     predictedInput.value = "";
     manualDateInput.value = "";
 });
