@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Accuracy Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <h1>🚌 Bus Accuracy Tracker</h1>
+
+    <div class="card">
+        <label>Google Predicted Arrival (HH:MM):</label>
+        <input type="time" id="predictedTime">
+
+        <label>Optional: Enter a Previous Date:</label>
+        <input type="date" id="manualDate">
+
+        <button id="arrivedBtn">Bus Arrived Now</button>
+        <button id="deleteBtn" class="delete">Delete Last Entry</button>
+    </div>
+
+    <h2>Logged Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Predicted</th>
+                <th>Actual</th>
+                <th>Difference (min)</th>
+            </tr>
+        </thead>
+        <tbody id="dataTable"></tbody>
+    </table>
+
+    <h2>Accuracy Chart</h2>
+    <canvas id="accuracyChart"></canvas>
+
+    <button id="exportBtn" class="export">Export CSV</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
